@@ -1,0 +1,101 @@
+$mediaMinWidth: 480px;
+
+$xxl: 2559px;
+$xl: 1919px;
+$lapotopMax: 1366px;
+$tabletMax: 1023px;
+$mobileMax: 767px;
+$s: 440px;
+$xs: 374px;
+
+@function translate-media-condition($c) {
+    $condMap: (
+        'retina':
+        '(-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)',
+        'hover': '(pointer: fine)',
+        'not-hover': '(pointer: coarse), (pointer: none)',
+        '>2560': '(min-width: 2560px)',
+        '<2559': '(max-width: 2559px)',
+        '>1920': '(min-width: 1920px)',
+        '<1919': '(max-width: 1919px)',
+        '>1367': '(min-width: 1367px)',
+        '<1366': '(max-width: 1366px)',
+        '>1024': '(min-width: 1024px)',
+        '<1023': '(max-width: 1023px)',
+        '>768': '(min-width: 768px)',
+        '<767': '(max-width: 767px)',
+        '>xs': '(min-width: 375px)',
+        '<xs': '(max-width: 374px)',
+        '<s': '(max-width: 440px)',
+        '<xxs': '(max-width: 319px)',
+    );
+    @return map-get($condMap, $c);
+}
+
+@mixin media($args...) {
+    $query: '';
+    @each $arg in $args {
+        $op: '';
+        @if ($query != '') {
+            $op: ' and ';
+        }
+        $query: $query + $op + translate-media-condition($arg);
+    }
+    @media #{$query} {
+        @content;
+    }
+}
+
+@mixin mediaD {
+    @include media('>1024') {
+        @content;
+    }
+}
+
+@mixin mediaL {
+    @include media('>1024', '<1366') {
+        @content;
+    }
+}
+
+@mixin mediaTL {
+    @include media('>768', '<1366') {
+        @content;
+    }
+}
+
+@mixin mediaTD {
+    @include media('>768') {
+        @content;
+    }
+}
+
+@mixin mediaT {
+    @include media('>768', '<1023') {
+        @content;
+    }
+}
+
+@mixin mediaML {
+    @include media('<1366') {
+        @content;
+    }
+}
+
+@mixin mediaMT {
+    @include media('<1023') {
+        @content;
+    }
+}
+
+@mixin mediaM {
+    @include media('<767') {
+        @content;
+    }
+}
+
+@mixin mediaXS {
+    @include media('<xs') {
+        @content;
+    }
+}

@@ -1,0 +1,15 @@
+.button {
+    min-width: 200px;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-weight: 700;
+    font-size: 14px;
+    border: 0;
+    cursor: pointer;
+    transition: opacity 0.3s;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}

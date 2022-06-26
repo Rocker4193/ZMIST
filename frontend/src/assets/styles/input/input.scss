@@ -1,0 +1,19 @@
+@import "assets/styles/variables";
+
+.input {
+    padding: 10px 20px;
+    font-weight: 400;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background-color: $color-white;
+
+    &:focus {
+        outline: 0;
+        border-color: $color-focused;
+    }
+
+    &--search {
+        background: url('../../icons/search.svg') calc(100% - 20px) center/12px 12px no-repeat, $color-white;
+    }
+}

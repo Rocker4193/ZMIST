@@ -1,0 +1,5 @@
+@function advanced-calc($minValue, $maxValue, $minScreen, $maxScreen) {
+    $x: calc(($maxValue - $minValue) / ($maxScreen - $minScreen));
+    // eslint-disable-next-line
+    @return calc(#{$x * 100}vw + #{$minValue - ($x * $minScreen)}px);
+}

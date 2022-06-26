@@ -1,0 +1,35 @@
+@import "./fonts";
+@import "./variables";
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: $font-main;
+}
+
+.no-display {
+    display: none;
+}
+
+
+.p-hide {
+    @media print {
+        display: none !important;
+    }
+}
+
+.p-show {
+    display: none !important;
+    
+    @media print {
+        display: block !important;
+    }
+}
